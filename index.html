@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Majid AI - Business Management</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#182235}
+header{background:#14243d;color:white;padding:20px}
+header h1{margin:0;font-size:25px}
+header p{margin:7px 0 0;color:#c5d2e5}
+.container{padding:18px;max-width:1100px;margin:auto}
+.welcome{background:linear-gradient(120deg,#1769aa,#15345f);color:white;padding:24px;border-radius:16px;margin-bottom:20px}
+.welcome h2{margin:0 0 8px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:white;padding:18px;border-radius:13px;box-shadow:0 3px 12px #14243d10}
+.card h3{margin:8px 0;font-size:16px}
+.card p{color:#68758a;font-size:13px;margin:0}
+.icon{font-size:27px}
+.section-title{margin:25px 0 12px}
+.ai{background:#14243d;color:white;padding:20px;border-radius:15px;margin-top:20px}
+.ai input{width:100%;padding:13px;border:0;border-radius:8px;margin-top:12px}
+button{background:#1684d8;color:white;border:0;padding:12px 17px;border-radius:8px;margin-top:10px;font-weight:bold}
+footer{text-align:center;padding:25px;color:#788398;font-size:12px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header>
+<h1>🌐 Majid AI</h1>
+<p>One Platform. Every Business.</p>
+</header>
+<main class="container">
+<section class="welcome">
+<h2>Welcome to Majid AI</h2>
+<p>Your intelligent business management platform.</p>
+<p>Manage your company, projects, employees and accounts in one place.</p>
+</section>
+
+<h3 class="section-title">Business Management</h3>
+<div class="grid">
+<div class="card"><div class="icon">🏢</div><h3>My Company</h3><p>Company profile, branding and settings.</p></div>
+<div class="card"><div class="icon">💼</div><h3>Business Builder</h3><p>Add any type of business and services.</p></div>
+<div class="card"><div class="icon">👥</div><h3>Clients & CRM</h3><p>Manage customers and contracts.</p></div>
+<div class="card"><div class="icon">📁</div><h3>Projects & Orders</h3><p>Manage projects, tasks and progress.</p></div>
+<div class="card"><div class="icon">📐</div><h3>Drawings & Documents</h3><p>Store and understand project drawings.</p></div>
+<div class="card"><div class="icon">🏗️</div><h3>Construction Works</h3><p>RCC, PCC, electrical, plumbing, HVAC, tiles and more.</p></div>
+<div class="card"><div class="icon">💰</div><h3>Accounts</h3><p>Income, expenses, payments and profit.</p></div>
+<div class="card"><div class="icon">👷</div><h3>Employees & Labour</h3><p>Attendance, wages and payroll.</p></div>
+<div class="card"><div class="icon">📊</div><h3>Reports</h3><p>Business performance and analytics.</p></div>
+</div>
+
+<section class="ai">
+<h2>🤖 Majid AI Assistant</h2>
+<p>Ask questions about your business. Voice and smart AI features will be connected in future stages.</p>
+<input id="question" placeholder="Ask Majid AI something...">
+<button onclick="askAI()">Send Question</button>
+<p id="answer"></p>
+</section>
+</main>
+<footer>Majid AI © 2026 | International Business Platform</footer>
+<script>
+function askAI(){
+const q=document.getElementById('question').value;
+document.getElementById('answer').innerText=q
+? "Your question: "+q+" | AI connection will be added in a future development stage."
+: "Please enter your question.";
+}
+</script>
+</body>
+</html>
