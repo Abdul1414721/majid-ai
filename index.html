@@ -4,70 +4,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Majid AI - Business Management</title>
+<title>A.MD Ali | Global Business Management</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#182235}
-header{background:#14243d;color:white;padding:20px}
-header h1{margin:0;font-size:25px}
-header p{margin:7px 0 0;color:#c5d2e5}
-.container{padding:18px;max-width:1100px;margin:auto}
-.welcome{background:linear-gradient(120deg,#1769aa,#15345f);color:white;padding:24px;border-radius:16px;margin-bottom:20px}
-.welcome h2{margin:0 0 8px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:white;padding:18px;border-radius:13px;box-shadow:0 3px 12px #14243d10}
-.card h3{margin:8px 0;font-size:16px}
-.card p{color:#68758a;font-size:13px;margin:0}
-.icon{font-size:27px}
-.section-title{margin:25px 0 12px}
-.ai{background:#14243d;color:white;padding:20px;border-radius:15px;margin-top:20px}
-.ai input{width:100%;padding:13px;border:0;border-radius:8px;margin-top:12px}
-button{background:#1684d8;color:white;border:0;padding:12px 17px;border-radius:8px;margin-top:10px;font-weight:bold}
-footer{text-align:center;padding:25px;color:#788398;font-size:12px}
-@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#17243a}
+header{background:#14243d;color:white;padding:22px}
+.brand{font-size:28px;font-weight:bold;color:#63b5ff}
+header p{color:#cbd8e8;margin-bottom:0}
+.container{max-width:1100px;margin:auto;padding:20px}
+.hero{background:linear-gradient(120deg,#123b69,#1678bd);color:white;padding:28px 20px;border-radius:16px;margin-bottom:22px}
+.hero h1{margin:0 0 10px}
+.hero p{line-height:1.6;color:#e4f1ff}
+.search{width:100%;padding:14px;border:1px solid #d8e0eb;border-radius:10px;font-size:16px;margin:12px 0 22px}
+.grid,.modules{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.card,.module{background:white;border:1px solid #e1e7ef;border-radius:13px;padding:17px;cursor:pointer}
+.emoji,.module span{font-size:29px}
+.card h3{margin:10px 0 6px}
+.card p{font-size:12px;color:#66758a}
+.card button{background:#eaf4ff;color:#1769aa;border:0;padding:9px;border-radius:7px}
+#dashboard{display:none}
+.back{background:#eaf4ff;color:#1769aa;border:0;padding:12px;border-radius:8px;margin-bottom:18px}
+.module{cursor:default;font-weight:bold}
+.module span{display:block;margin-bottom:10px}
+.ai{background:#e8f4ff;padding:18px;border-radius:12px;margin-top:20px}
+footer{text-align:center;color:#718096;padding:25px;font-size:12px}
+@media(min-width:700px){.grid,.modules{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
 <header>
-<h1>🌐 Majid AI</h1>
+<div class="brand">A.MD Ali</div>
 <p>One Platform. Every Business.</p>
 </header>
 <main class="container">
-<section class="welcome">
-<h2>Welcome to Majid AI</h2>
-<p>Your intelligent business management platform.</p>
-<p>Manage your company, projects, employees and accounts in one place.</p>
-</section>
-
-<h3 class="section-title">Business Management</h3>
-<div class="grid">
-<div class="card"><div class="icon">🏢</div><h3>My Company</h3><p>Company profile, branding and settings.</p></div>
-<div class="card"><div class="icon">💼</div><h3>Business Builder</h3><p>Add any type of business and services.</p></div>
-<div class="card"><div class="icon">👥</div><h3>Clients & CRM</h3><p>Manage customers and contracts.</p></div>
-<div class="card"><div class="icon">📁</div><h3>Projects & Orders</h3><p>Manage projects, tasks and progress.</p></div>
-<div class="card"><div class="icon">📐</div><h3>Drawings & Documents</h3><p>Store and understand project drawings.</p></div>
-<div class="card"><div class="icon">🏗️</div><h3>Construction Works</h3><p>RCC, PCC, electrical, plumbing, HVAC, tiles and more.</p></div>
-<div class="card"><div class="icon">💰</div><h3>Accounts</h3><p>Income, expenses, payments and profit.</p></div>
-<div class="card"><div class="icon">👷</div><h3>Employees & Labour</h3><p>Attendance, wages and payroll.</p></div>
-<div class="card"><div class="icon">📊</div><h3>Reports</h3><p>Business performance and analytics.</p></div>
+<section id="home">
+<div class="hero">
+<h1>Welcome to A.MD Ali</h1>
+<p>Manage your business, team, customers, projects and accounts — all in one platform.</p>
+<strong>Choose Your Business</strong>
 </div>
-
-<section class="ai">
-<h2>🤖 Majid AI Assistant</h2>
-<p>Ask questions about your business. Voice and smart AI features will be connected in future stages.</p>
-<input id="question" placeholder="Ask Majid AI something...">
-<button onclick="askAI()">Send Question</button>
-<p id="answer"></p>
+<input class="search" id="search" placeholder="Search any business..." oninput="filterBusinesses()">
+<h2>Explore All Businesses</h2>
+<div class="grid" id="businessGrid"></div>
+</section>
+<section id="dashboard">
+<button class="back" onclick="goHome()">← All Businesses</button>
+<div class="hero">
+<h1 id="businessTitle"></h1>
+<p id="businessDescription"></p>
+</div>
+<h2>Management Modules</h2>
+<div class="modules" id="moduleGrid"></div>
+<div class="ai">
+<h3>✨ A.MD Ali AI Assistant</h3>
+<p>Ask about your business, employees, projects and accounts.</p>
+</div>
 </section>
 </main>
-<footer>Majid AI © 2026 | International Business Platform</footer>
+<footer>© 2026 A.MD Ali. All rights reserved.</footer>
 <script>
-function askAI(){
-const q=document.getElementById('question').value;
-document.getElementById('answer').innerText=q
-? "Your question: "+q+" | AI connection will be added in a future development stage."
-: "Please enter your question.";
+const businesses=[
+["🏗️","Construction","Projects and engineering management",["Projects & Sites","Clients & Contracts","Drawings & Plans","Quantity Takeoff","Labour & Attendance","Materials & Stock","BOQ & Estimates","Accounts & Payments","Subcontractors","Safety & QA/QC","Site Progress","Reports & Profit"]],
+["🏫","School & College","Complete education management",["Students","Teachers","Student Attendance","Teacher Attendance","Fees & Payments","Classes & Sections","Exams & Results","Timetable","School Buses","Pick & Drop","Parents Portal","Accounts & Reports"]],
+["🏨","Hotel & Hospitality","Hotel and guest management",["Rooms","Reservations","Guests","Check In / Check Out","Room Service","Housekeeping","Staff & Shifts","Food & Restaurant","Billing","Expenses","Maintenance","Reports"]],
+["⛽","Petrol Pump","Fuel station management",["Fuel Stock","Tank Readings","Nozzle Readings","Fuel Purchases","Fuel Sales","Daily Closing","Staff Shifts","Supplier Accounts","Expenses","Maintenance","Cash Reconciliation","Reports"]],
+["💊","Pharmacy","Medicine store management",["Medicines","Batch & Expiry","Purchases","Sales & Billing","Stock","Suppliers","Customer Ledger","Returns","Expiry Alerts","Branches","Accounts","Reports"]],
+["🏭","Factory & Manufacturing","Production management",["Raw Materials","Production Planning","Production Entry","Finished Goods","Machinery","Maintenance","Quality Control","Workers","Warehouse","Dispatch","Production Cost","Reports"]],
+["🛒","Retail Shop","Shop and inventory management",["Point of Sale","Products","Inventory","Purchases","Suppliers","Customers","Barcode","Returns","Credit Accounts","Branches","Cash Closing","Reports"]],
+["🍽️","Restaurant & Cafe","Food service management",["Menu","Tables","Orders","Kitchen Orders","Ingredients","Inventory","Delivery","Customers","Billing","Staff","Expenses","Reports"]],
+["🏥","Hospital & Clinic","Healthcare administration",["Patients","Appointments","Doctors","Staff","Departments","Laboratory","Pharmacy","Billing","Medical Records","Schedules","Accounts","Reports"]],
+["🏠","Real Estate","Property management",["Properties","Owners","Buyers","Tenants","Rent","Sales","Agreements","Commissions","Payments","Documents","Agents","Reports"]],
+["🚚","Transport & Logistics","Fleet and delivery management",["Vehicles","Drivers","Trips","Deliveries","Fuel","Maintenance","Routes","Customers","Bookings","Expenses","Payments","Reports"]],
+["🔧","Automotive Workshop","Vehicle repair management",["Customers","Vehicles","Job Cards","Repairs","Spare Parts","Inventory","Mechanics","Service History","Billing","Suppliers","Expenses","Reports"]],
+["🌾","Agriculture & Dairy","Farm management",["Crops","Land","Animals","Feed","Milk Production","Vaccinations","Workers","Equipment","Purchases","Sales","Expenses","Reports"]],
+["💪","Gym & Fitness","Fitness center management",["Members","Memberships","Trainers","Attendance","Packages","Payments","Classes","Equipment","Staff","Expenses","Reports","Notifications"]],
+["✈️","Travel & Tourism","Travel agency management",["Customers","Tour Packages","Bookings","Flights","Hotels","Visa Records","Payments","Suppliers","Documents","Commissions","Expenses","Reports"]],
+["💇","Fashion & Beauty","Salon management",["Appointments","Services","Products","Customers","Staff","Attendance","Inventory","Billing","Packages","Expenses","Reports","Offers"]],
+["📚","Education & Training","Academy management",["Students","Courses","Teachers","Attendance","Admissions","Fees","Exams","Certificates","Timetable","Staff","Accounts","Reports"]],
+["💼","Professional Services","Service company management",["Clients","Projects","Service Orders","Contracts","Employees","Tasks","Invoices","Payments","Documents","Expenses","Reports","Settings"]],
+["🏢","Wholesale & Distribution","Wholesale management",["Products","Purchases","Sales","Warehouses","Stock","Suppliers","Customers","Orders","Deliveries","Payments","Accounts","Reports"]],
+["➕","Other Businesses","Create your custom business system",["Business Profile","Custom Services","Products","Customers","Employees","Orders","Accounts","Documents","Tasks","Reports","AI Assistant","Settings"]]
+];
+function renderBusinesses(list){
+const grid=document.getElementById("businessGrid");
+grid.innerHTML="";
+list.forEach(b=>{
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`<div class="emoji">${b[0]}</div><h3>${b[1]}</h3><p>${b[2]}</p><button>Explore →</button>`;
+card.onclick=()=>openBusiness(b);
+grid.appendChild(card);
+});
 }
+function filterBusinesses(){
+const q=document.getElementById("search").value.toLowerCase();
+renderBusinesses(businesses.filter(b=>(b[1]+" "+b[2]).toLowerCase().includes(q)));
+}
+function openBusiness(b){
+document.getElementById("home").style.display="none";
+document.getElementById("dashboard").style.display="block";
+document.getElementById("businessTitle").textContent=b[0]+" "+b[1]+" Dashboard";
+document.getElementById("businessDescription").textContent=b[2];
+const grid=document.getElementById("moduleGrid");
+grid.innerHTML="";
+b[3].forEach((m,i)=>{
+const item=document.createElement("div");
+item.className="module";
+item.innerHTML=`<span>${["📁","👥","📊","📋","💰","📦","📐","🧾","🛠️","📈","📄","⚙️"][i]}</span>${m}`;
+grid.appendChild(item);
+});
+window.scrollTo(0,0);
+}
+function goHome(){
+document.getElementById("dashboard").style.display="none";
+document.getElementById("home").style.display="block";
+window.scrollTo(0,0);
+}
+renderBusinesses(businesses);
 </script>
 </body>
 </html>
